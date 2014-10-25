@@ -39,19 +39,19 @@ To create a new product in the service use POST with
 curl -X POST -d "{\"id\":\"\",\"sizeList\":[{\"name\":\"XL\",\"quantity\":23}]}" http://localhost:8080/ds/json/products/create --header "Content-Type:application/json"
 ```
 
-To update an existing product use put with the update action
+To update an existing product use PUT with the update action
 
 ```sh
 curl -X PUT -d "{\"id\":\"1\",\"sizeList\":[{\"name\":\"XL\",\"quantity\":23},{\"name\":\"XXL\",\"quantity\":24}]}" http://localhost:8080/ds/json/products/update/1 --header "Content-Type:application/json"
 ```
 
-To delete an existing product use delete with the delete action
+To delete an existing product use DELETE with the delete action
 
 ```sh
 curl -X DELETE  http://localhost:8080/ds/json/products/delete/1
 ```
 
-To get an existing product us get with the get action
+To get an existing product use GET with the get action
 
 ```sh
 curl -X GET http://localhost:8080/ds/json/products/get/1
