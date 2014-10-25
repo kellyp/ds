@@ -32,7 +32,7 @@ public class ProductService {
 	@POST
 	@Path("/create")
 	@Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+	 @Produces(MediaType.APPLICATION_JSON)
 	public Response createProduct(Product product) {
 
         product = new ProductCreateCommand(product).execute();
@@ -41,34 +41,34 @@ public class ProductService {
 	}
 
 
-    @PUT
-    @Path("/update/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Product updateProduct(@PathParam("id") String id,  Product product) {
+    	@PUT
+    	@Path("/update/{id}")
+    	@Consumes(MediaType.APPLICATION_JSON)
+    	@Produces(MediaType.APPLICATION_JSON)
+    	public Product updateProduct(@PathParam("id") String id,  Product product) {
 
-        product = new ProductUpdateCommand(id, product).execute();
-        return product;
+        	product = new ProductUpdateCommand(id, product).execute();
+        	return product;
 
-    }
+    	}
 
-    @GET
-    @Path("/get/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Product getProduct(@PathParam("id") String id) {
+    	@GET
+    	@Path("/get/{id}")
+    	@Consumes(MediaType.APPLICATION_JSON)
+    	@Produces(MediaType.APPLICATION_JSON)
+    	public Product getProduct(@PathParam("id") String id) {
 
-        return new ProductGetCommand(id).execute();
+        	return new ProductGetCommand(id).execute();
 
-    }
+    	}
 
-    @DELETE
-    @Path("/delete/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteProduct(@PathParam("id") String id) {
+    	@DELETE
+    	@Path("/delete/{id}")
+    	@Produces(MediaType.APPLICATION_JSON)
+    	public Response deleteProduct(@PathParam("id") String id) {
 
-        boolean didDelete = new ProductDeleteCommand(id).execute();
-        return Response.status(200).entity("{\"message\":\"product with id: " + id + " deleted successfully.\"}").build();
+        	boolean didDelete = new ProductDeleteCommand(id).execute();
+        	return Response.status(200).entity("{\"message\":\"product with id: " + id + " deleted successfully.\"}").build();
 
-    }
+    	}	
 }
