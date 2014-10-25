@@ -4,6 +4,7 @@ import com.kelly.Product;
 import com.kelly.dao.ProductDao;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandProperties;
 
 
 public class ProductUpdateCommand extends HystrixCommand<Product> {
@@ -11,7 +12,9 @@ public class ProductUpdateCommand extends HystrixCommand<Product> {
     private final Product product;
 
     public ProductUpdateCommand(String id, Product product) {
-        super(HystrixCommandGroupKey.Factory.asKey("ProductGroup"));
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ProductGroup"))
+                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                        .withCircuitBreakerEnabled(true)));
         this.id = id;
         this.product = product;
     }

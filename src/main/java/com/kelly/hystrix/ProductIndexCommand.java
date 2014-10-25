@@ -4,6 +4,7 @@ import com.kelly.Product;
 import com.kelly.dao.ProductDao;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandProperties;
 
 import java.util.List;
 
@@ -11,7 +12,9 @@ import java.util.List;
 public class ProductIndexCommand extends HystrixCommand<List<Product>> {
 
     public ProductIndexCommand() {
-        super(HystrixCommandGroupKey.Factory.asKey("ProductGroup"));
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ProductGroup"))
+                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                        .withCircuitBreakerEnabled(true)));
     }
 
     @Override
