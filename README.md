@@ -11,10 +11,11 @@ Version
 
 Setup
 -
-clone this repository
+clone this repository and cd into the new directory
 
 ```sh
 git clone https://github.com/kellyp/ds.git
+cd ds
 ```
 
 startup locally using the maven jetty plugin 
